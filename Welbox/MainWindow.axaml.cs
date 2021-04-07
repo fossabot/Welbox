@@ -31,7 +31,7 @@ namespace Welbox
             _config = Config.GetConfig();
             theme = Theme.GetTheme(_config.SelectedTheme);
             LoadTheme();
-            if(theme.LaunchItems.Count > 0) LoadStartIcons();
+            if(theme.LaunchItems != null) LoadStartIcons();
         }
 
         private void LoadTheme()
@@ -47,9 +47,12 @@ namespace Welbox
                 // Text color
                 var style = new Style(x => x.OfType<TextBlock>());
                 var color = new Setter();
-                color.Property = TextBlock.ForegroundProperty;
+                color.Property = ForegroundProperty;
                 color.Value = SolidColorBrush.Parse(theme.HexTextColor);
                 style.Setters.Add(color);
+                var menustyle = new Style(x => x.OfType<MenuItem>());
+                menustyle.Setters.Add(color);
+                
                 
                 // Text size
                 var size = new Setter();
@@ -91,6 +94,12 @@ namespace Welbox
         {
             var clock = this.FindControl<TextBlock>("Clock");
             clock.Text = DateTime.Now.ToString("t");
+        }
+
+        private void MenuItem_OnClick(object? sender, RoutedEventArgs e)
+        {
+            var settings = new Settings();
+            settings.ShowDialog(this);
         }
     }
 }

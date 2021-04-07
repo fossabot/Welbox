@@ -62,5 +62,34 @@ namespace Welbox.Classes
             client.DownloadFile(new Uri(url), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Welbox/Images/"+filename));
             return true;
         }
+
+        public static List<string> GetAvailableThemes()
+        {
+            var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Welbox/Themes");
+            var files = Directory.GetFiles(dir);
+            List<string> themes = new List<string>();
+            foreach (var file in files)
+            {
+                string json = File.ReadAllText(DefaultConfig);
+                Theme th = new Theme();
+                try
+                {
+                    th = JsonConvert.DeserializeObject<Theme>(json);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
+                if (th != null)
+                {
+                    themes.Add(th.DisplayName);
+                }
+            }
+
+            return themes;
+        }
+
     }
+    
 }
