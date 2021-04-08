@@ -63,14 +63,15 @@ namespace Welbox.Classes
             return true;
         }
 
-        public static List<string> GetAvailableThemes()
+        public static List<Theme> GetAvailableThemes()
         {
             var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Welbox/Themes");
             var files = Directory.GetFiles(dir);
-            List<string> themes = new List<string>();
+            List<Theme> themes = new();
             foreach (var file in files)
             {
-                string json = File.ReadAllText(DefaultConfig);
+                string json = File.ReadAllText(file);
+                Console.WriteLine(json);
                 Theme th = new Theme();
                 try
                 {
@@ -83,7 +84,7 @@ namespace Welbox.Classes
 
                 if (th != null)
                 {
-                    themes.Add(th.DisplayName);
+                    themes.Add(th);
                 }
             }
 

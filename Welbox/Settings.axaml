@@ -20,8 +20,12 @@
     <StackPanel>
         <TextBlock FontSize="26" FontWeight="Bold" Margin="10,10,0,5">Configuration</TextBlock>
         <TextBlock Classes="a">Selected Theme</TextBlock>
-        <ComboBox Name="Themes">
-            
+        <ComboBox Name="Themes" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
     </StackPanel>
 </Window>
