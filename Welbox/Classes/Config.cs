@@ -6,14 +6,14 @@ namespace Welbox.Classes
 {
     public class Config
     {
-        public string? SelectedTheme { get; set; }
+        public string SelectedTheme { get; set; } = null!;
         public string? Language { get; set; }
 
         public static Config GetConfig()
         {
             string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Welbox/appconfig.json");
             //CHECK FOR CONFIG
-            Config config = new();
+            Config? config = new();
             if (File.Exists(configPath) == false)
             {
                 var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Welbox");

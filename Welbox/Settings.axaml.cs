@@ -21,14 +21,14 @@ namespace Welbox
             var config = Config.GetConfig();
             AvaloniaXamlLoader.Load(this);
             var themesBox = this.FindControl<ComboBox>("Themes");
-            List<Theme> AvailableThemes = Theme.GetAvailableThemes();
+            List<Theme> availableThemes = Theme.GetAvailableThemes();
             int index = 0;
-            foreach (var theme in AvailableThemes)
+            foreach (var theme in availableThemes)
             {
                 if (theme.FileName == config.SelectedTheme) break;
                 index += 1;
             }
-            themesBox.Items = AvailableThemes;
+            themesBox.Items = availableThemes;
             themesBox.SelectedIndex = index;
         }
     }

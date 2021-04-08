@@ -14,9 +14,9 @@ namespace Welbox
 {
     public class MainWindow : Window
     {
-        private Config _config;
-        private Theme theme;
-        private Timer ClockTimer;
+        private Config? _config;
+        private Theme? _theme;
+        private Timer? _clockTimer;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,18 +29,18 @@ namespace Welbox
         {
             AvaloniaXamlLoader.Load(this);
             _config = Config.GetConfig();
-            theme = Theme.GetTheme(_config.SelectedTheme);
+            _theme = Theme.GetTheme(_config.SelectedTheme);
             LoadTheme();
-            if(theme.LaunchItems != null) LoadStartIcons();
+            if(_theme.LaunchItems != null) LoadStartIcons();
         }
 
         private void LoadTheme()
         {
-            if (theme.Source == "file")
+            if (_theme.Source == "file")
             {
                 // Background
                 //var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                var filestream = new FileStream(theme.BgPath,FileMode.Open);
+                var filestream = new FileStream(_theme.BgPath,FileMode.Open);
                 var bitmap = new Bitmap(filestream);
                 this.Background = new ImageBrush(bitmap);
                 
@@ -48,7 +48,7 @@ namespace Welbox
                 var style = new Style(x => x.OfType<TextBlock>());
                 var color = new Setter();
                 color.Property = ForegroundProperty;
-                color.Value = SolidColorBrush.Parse(theme.HexTextColor);
+                color.Value = SolidColorBrush.Parse(_theme.HexTextColor);
                 style.Setters.Add(color);
                 var menustyle = new Style(x => x.OfType<MenuItem>());
                 menustyle.Setters.Add(color);
@@ -57,7 +57,7 @@ namespace Welbox
                 // Text size
                 var size = new Setter();
                 size.Property = TextBlock.FontSizeProperty;
-                size.Value = theme.FontSize;
+                size.Value = _theme.FontSize;
                 style.Setters.Add(size);
                     
                     
@@ -66,17 +66,17 @@ namespace Welbox
                 var clock = this.FindControl<TextBlock>("Clock");
                 clock.Text = DateTime.Now.ToString("t");
                 
-                ClockTimer = new Timer();
-                ClockTimer.Interval = 10000;
-                ClockTimer.Elapsed += ChangeTime;
-                ClockTimer.Start();
+                _clockTimer = new Timer();
+                _clockTimer.Interval = 10000;
+                _clockTimer.Elapsed += ChangeTime;
+                _clockTimer.Start();
             }
         }
 
         private void LoadStartIcons()
         {
             var panel = this.FindControl<DockPanel>("IconPanel");
-            foreach (var item in theme.LaunchItems)
+            foreach (var item in _theme.LaunchItems)
             {
                 var iconButton = new Button();
                 Projektanker.Icons.Avalonia.Attached.SetIcon(iconButton,item.IconName);

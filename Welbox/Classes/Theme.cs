@@ -49,7 +49,7 @@ namespace Welbox.Classes
                 string json = File.ReadAllText(DefaultConfig);
                 curTheme = JsonConvert.DeserializeObject<Theme>(json);
             }
-            return curTheme;
+            return curTheme!;
         }
 
         private static bool DownloadImage(string url, string filename)
