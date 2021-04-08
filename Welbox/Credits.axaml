@@ -2,8 +2,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="235"
         x:Class="Welbox.Credits"
-        Title="Credits">
-    Welcome to Avalonia!
+        Title="About" HorizontalContentAlignment="Center"
+        WindowStartupLocation="CenterScreen">
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="{x:Null}"></Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+    </Window.Styles>
+    <StackPanel>
+        <TextBlock FontSize="30" FontWeight="Bold">Welbox</TextBlock>
+        <TextBlock FontSize="16">Application © hernik, released under the GPLv3 license.</TextBlock>
+        <TextBlock Margin="0,10,0,0" FontSize="20">This application uses the following libraries:</TextBlock>
+        <Button Click="Button_OnClick" Tag="https://github.com/AvaloniaUI/Avalonia/blob/master/licence.md" Content="- Avalonia Copyright (c) .NET Foundation and Contributors All Rights Reserved,&#x0a; used under the MIT license"></Button>
+        <Button Click="Button_OnClick" Tag="https://github.com/AvaloniaUtils/MessageBox.Avalonia/blob/master/LICENSE">- MessageBox.Avalonia Copyright Copyright (c) 2019 CreateLab, used under the MIT license</Button>
+        <Button Click="Button_OnClick" Tag="https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md">- Newtonsoft.Json Copyright (c) 2007 James Newton-King, used under the MIT license</Button>
+        <Button Click="Button_OnClick" Tag="https://github.com/Projektanker/Icons.Avalonia/blob/master/LICENSE">- Icons.Avalonia Copyright (c) 2020 Projektanker, used under the MIT license</Button>
+        <Button Click="Button_OnClick" Tag="https://github.com/arklumpus/AvaloniaColorPicker/blob/main/LICENSE">- AvaloniaColorPicker Copyright (c) 2020 arklumpus, used under the GPLv3 license</Button>
+    </StackPanel>
 </Window>

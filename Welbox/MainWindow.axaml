@@ -12,7 +12,8 @@
         <DockPanel Grid.Row="0" VerticalAlignment="Top">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open..." Click="MenuItem_OnClick"/>
+                    <MenuItem Header="_Settings" Click="MenuItem_OnClick"/>
+                    <MenuItem Header="_About" Click="About_OnClick"></MenuItem>
                     <Separator />
                     <MenuItem Header="_Exit" />
                 </MenuItem>

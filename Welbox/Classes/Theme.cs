@@ -14,7 +14,7 @@ namespace Welbox.Classes
         public string? BgPath { get; set; }
         public string? HexTextColor { get; set; }
         public string? Source { get; set; }
-        public double? FontSize { get; set; }
+        public double FontSize { get; set; }
         public List<LaunchItem>? LaunchItems { get; set; }
 
         public static Theme GetTheme(string name)

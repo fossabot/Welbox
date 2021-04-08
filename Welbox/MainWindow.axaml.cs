@@ -101,5 +101,11 @@ namespace Welbox
             var settings = new Settings();
             settings.ShowDialog(this);
         }
+
+        private void About_OnClick(object? sender, RoutedEventArgs e)
+        {
+            var win = new Credits();
+            win.ShowDialog(this);
+        }
     }
 }

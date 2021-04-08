@@ -2,19 +2,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
         x:Class="Welbox.Settings"
         Title="Settings"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        xmlns:colpick="clr-namespace:AvaloniaColorPicker;assembly=AvaloniaColorPicker">
     <Window.Styles>
         <Style Selector="TextBlock.a">
         <Setter Property="FontSize" Value="18"></Setter>
-            <Setter Property="Margin" Value="10,10,0,0"></Setter>
-
+            <Setter Property="Margin" Value="10,10,0,0"/>
     </Style>
         <Style Selector="ComboBox">
-            <Setter Property="Margin" Value="10,0,0,0"></Setter>
-
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
     </Window.Styles>
     <StackPanel>
@@ -27,5 +31,17 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <TextBlock Classes="a">Display name</TextBlock>
+        <TextBox Name="DisplayNameBox" Width="200"></TextBox>
+        <TextBlock Classes="a">Background image type</TextBlock>
+        <ComboBox Name="TypeComboBox">
+            <ComboBoxItem>Image</ComboBoxItem>
+        </ComboBox>
+        <TextBlock Classes="a">Text color</TextBlock>
+        <colpick:ColorButton Margin="10,10,0,0" Name="FontColor"></colpick:ColorButton>
+        <TextBlock Classes="a">Font size</TextBlock>
+        <NumericUpDown Name="FontSize" Width="200" HorizontalAlignment="Left" Margin="10,10,0,0"></NumericUpDown>
+        <TextBlock Classes="a">Launch icons</TextBlock>
+        <DockPanel Name="IconPanel"></DockPanel>
     </StackPanel>
 </Window>
