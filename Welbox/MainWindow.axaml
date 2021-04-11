@@ -26,7 +26,7 @@
             <TextBlock Grid.Row="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                        Name="Clock" />
             <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">Hello World</TextBlock>
-            <DockPanel Grid.Row="2" Name="IconPanel" />
+            <DockPanel Grid.Row="2" HorizontalAlignment="Center" Name="IconPanel" />
         </Grid>
     </Grid>
 </Window>

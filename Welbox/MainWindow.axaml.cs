@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Timers;
 using Avalonia;
@@ -8,6 +9,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Styling;
+using Projektanker.Icons.Avalonia;
 using Welbox.Classes;
 
 namespace Welbox
@@ -36,13 +38,13 @@ namespace Welbox
 
         private void LoadTheme()
         {
-            if (_theme.Source == "file")
+            if (_theme.Source == "File")
             {
                 // Background
                 //var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
                 var filestream = new FileStream(_theme.BgPath,FileMode.Open);
                 var bitmap = new Bitmap(filestream);
-                this.Background = new ImageBrush(bitmap);
+                this.Background = new ImageBrush(bitmap) {Stretch = Stretch.UniformToFill}; //! add this to theme settings
                 
                 // Text color
                 var style = new Style(x => x.OfType<TextBlock>());
@@ -52,8 +54,7 @@ namespace Welbox
                 style.Setters.Add(color);
                 var menustyle = new Style(x => x.OfType<MenuItem>());
                 menustyle.Setters.Add(color);
-                
-                
+
                 // Text size
                 var size = new Setter();
                 size.Property = TextBlock.FontSizeProperty;
@@ -81,6 +82,21 @@ namespace Welbox
                 var iconButton = new Button();
                 Projektanker.Icons.Avalonia.Attached.SetIcon(iconButton,item.IconName);
                 iconButton.Click += OnButtonClick;
+                iconButton.FontSize = 30;
+                iconButton.Width = 80;
+                iconButton.Height = 80;
+                var bgStyle = new Style();
+                var bgSet = new Setter();
+                bgSet.Property = BackgroundProperty;
+                bgSet.Value = SolidColorBrush.Parse(_theme.HexTextColor); // change this to a unique setting in Theme.cs
+                bgStyle.Setters.Add(bgSet);
+                iconButton.Styles.Add(bgStyle);
+                iconButton.Click += (sender, args) =>
+                {
+                    ProcessStartInfo startInfo = new() { FileName = item.LaunchCommand }; 
+                    Process proc = new() { StartInfo = startInfo, };
+                    proc.Start();
+                };
                 panel.Children.Add(iconButton);
             }
         }
@@ -96,10 +112,14 @@ namespace Welbox
             clock.Text = DateTime.Now.ToString("t");
         }
 
-        private void MenuItem_OnClick(object? sender, RoutedEventArgs e)
+        private async void MenuItem_OnClick(object? sender, RoutedEventArgs e)
         {
             var settings = new Settings();
-            settings.ShowDialog(this);
+            var set = await settings.ShowDialog<bool?>(this);
+            if(set == true)
+            {
+                LoadTheme();
+            }
         }
 
         private void About_OnClick(object? sender, RoutedEventArgs e)

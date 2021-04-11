@@ -33,7 +33,7 @@ namespace Welbox.Classes
 
                 curTheme.DisplayName = "Default";
                 curTheme.FileName = "default";
-                curTheme.Source = "file";
+                curTheme.Source = "File";
                 curTheme.HexTextColor = "#ffffff";
                 curTheme.FontSize = 60.0;
                 curTheme.LaunchItems = new List<LaunchItem>();
