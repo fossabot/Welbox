@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
 <h1>Welbox</h1>
   <h2>A welcome screen</h2>
 <img src="https://github.com/hernikplays/Welbox/actions/workflows/dotnet.yml/badge.svg">
