@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450" Width="300" Height="670"
         x:Class="Welbox.Settings"
         Title="Settings"
         WindowStartupLocation="CenterScreen"
@@ -22,34 +22,36 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
     </Window.Styles>
-    <StackPanel>
-        <TextBlock FontSize="26" FontWeight="Bold" Margin="10,10,0,5">Configuration</TextBlock>
-        <TextBlock Classes="a">Selected Theme</TextBlock>
-        <ComboBox Name="Themes" Width="200">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DisplayName}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <TextBlock Classes="a">Display name</TextBlock>
-        <TextBox Name="DisplayNameBox" Width="200"></TextBox>
-        <TextBlock Classes="a">Background image type</TextBlock>
-        <ComboBox Name="TypeComboBox">
-            <ComboBoxItem>File</ComboBoxItem>
-        </ComboBox>
-        <TextBlock Classes="a">Image path</TextBlock>
-        <DockPanel>
-            <TextBox Name="ImagePathBox" IsReadOnly="True" Width="200"></TextBox>
-            <Button i:Attached.Icon="fas fa-folder-open" Height="30" Width="30" Margin="5,0,0,0" Name="OpenImageBtn" Click="OpenImageBtn_OnClick"></Button>
-        </DockPanel>
-        <TextBlock Classes="a">Text color</TextBlock>
-        <colpick:ColorButton Margin="10,10,0,0" Name="FontColor"></colpick:ColorButton>
-        <TextBlock Classes="a">Font size</TextBlock>
-        <NumericUpDown Name="FontSize" Width="200" HorizontalAlignment="Left" Margin="10,10,0,0"></NumericUpDown>
-        <TextBlock Classes="a">Launch icons</TextBlock>
-        <Button Name="AddIcon" i:Attached.Icon="fas fa-plus" Margin="10,5,0,0" Height="30" Width="30" Click="AddIcon_OnClick"/>
-        <StackPanel Name="IconPanel" Margin="10,10,0,0"></StackPanel>
-        <Button Name="SaveButton" Click="SaveButton_OnClick" Content="Save" FontWeight="Bold" FontSize="18" Margin="10,15,0,0"/>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock FontSize="26" FontWeight="Bold" Margin="10,10,0,5">Configuration</TextBlock>
+            <TextBlock Classes="a">Selected Theme</TextBlock>
+            <ComboBox Name="Themes" Width="200">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Classes="a">Display name</TextBlock>
+            <TextBox Name="DisplayNameBox" Width="200"></TextBox>
+            <TextBlock Classes="a">Background image type</TextBlock>
+            <ComboBox Name="TypeComboBox">
+                <ComboBoxItem>File</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Classes="a">Image path</TextBlock>
+            <DockPanel>
+                <TextBox Name="ImagePathBox" IsReadOnly="True" Width="200"></TextBox>
+                <Button i:Attached.Icon="fas fa-folder-open" Height="30" Width="30" Margin="5,0,0,0" Name="OpenImageBtn" Click="OpenImageBtn_OnClick"></Button>
+            </DockPanel>
+            <TextBlock Classes="a">Text color</TextBlock>
+            <colpick:ColorButton Margin="10,10,0,0" Name="FontColor"></colpick:ColorButton>
+            <TextBlock Classes="a">Font size</TextBlock>
+            <NumericUpDown Name="FontSize" Width="200" HorizontalAlignment="Left" Margin="10,10,0,0"></NumericUpDown>
+            <TextBlock Classes="a">Launch icons</TextBlock>
+            <Button Name="AddIcon" i:Attached.Icon="fas fa-plus" Margin="10,5,0,0" Height="30" Width="30" Click="AddIcon_OnClick"/>
+            <StackPanel Name="IconPanel" Margin="10,10,0,0"></StackPanel>
+            <Button Name="SaveButton" Click="SaveButton_OnClick" Content="Save" FontWeight="Bold" FontSize="18" Margin="10,15,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

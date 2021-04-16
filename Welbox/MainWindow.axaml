@@ -5,6 +5,14 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Welbox.MainWindow"
         Title="Welbox">
+    <Window.Styles>
+        <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="#8c8c8c"></Setter>
+    </Style>
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#636363"></Setter>
+        </Style>
+    </Window.Styles>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/><RowDefinition Height="1*" />
