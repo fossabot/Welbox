@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhernikplays%2FWelbox.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhernikplays%2FWelbox?ref=badge_shield)
+
 <div align="left">
 <h1>Welbox</h1>
   <h2>A welcome screen</h2>
@@ -20,3 +22,7 @@
     <li>.NET Standard 5</li>
   </ul>
 </div>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhernikplays%2FWelbox.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhernikplays%2FWelbox?ref=badge_large)
